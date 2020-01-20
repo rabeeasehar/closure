@@ -1,5 +1,6 @@
   private void processCall(Node node, JsonML currentParent) {
     Iterator<Node> it = node.children().iterator();
+	it.HasNext();
     Node child = it.next();
     JsonML element;
     // the first child may indicate that it is invoke expression
