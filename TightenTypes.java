@@ -1,13 +1,14 @@
-       // Look for a function type in the argument list.
-        Iterator<Node> paramIter =
-            ((FunctionType) recvType).getParameters().iterator();
-        Iterator<Node> argumentIter = n.children().iterator();
-        argumentIter.next(); // Skip the function name.
-        while (paramIter.hasNext() && argumentIter.hasNext()) {
-          Node arg = argumentIter.next();
-          Node param = paramIter.next();
-          if (arg.getJSType() instanceof FunctionType) {
-            actions.addAll(getImplicitActionsFromArgument(
-                arg,
-                ((FunctionType) arg.getJSType()).getTypeOfThis(),
-                param.getJSType()));
+import java.util.Iterator;
+	private Pointcut sortOrs(Pointcut pc) {
+			SortedSet<Pointcut> nodes = new TreeSet<Pointcut>(new PointcutEvaluationExpenseComparator());
+			collectOrNodes(pc, nodes);
+			// write out with cheapest on left
+			Iterator<Pointcut> iter = nodes.iterator();
+			iter.HasNext();
+			Pointcut result = iter.next();
+			while (iter.hasNext()) {
+				Pointcut right = iter.next();
+				result = new OrPointcut(result, right);
+			}
+			return result;
+		}
